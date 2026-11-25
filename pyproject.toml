@@ -8,64 +8,49 @@ requires-python = ">=3.12"
 dependencies = [
     # Web Framework (Async)
     "fastapi[standard]>=0.141.1",
-
     # Settings & Validation
     "pydantic>=2.9.0",
     "pydantic-settings>=2.15.0",
-
     # LLM
     "groq>=1.7.0",
     "tiktoken>=0.8.0",
-
     # Database & ORM (Async PostgreSQL)
     "sqlalchemy[asyncio]>=2.1.3",
     "asyncpg>=0.31.0",
     "alembic>=1.20.1",
     "pgvector>=0.5.1",
-
     # Existing Vector Database
     "qdrant-client>=1.12.0",
-
     # Document Parsing
     "docling>=2.9.0",
-
     # Text2SQL
     "vanna[postgres]>=0.7.0",
-
     # PostgreSQL (for existing synchronous integrations)
     "psycopg2-binary>=2.9.10",
-
     # Cache
     "upstash-redis>=1.2.0",
-
     # Authentication
     "pyjwt>=2.10.0",
     "passlib[bcrypt]>=1.7.4",
-
     # Logging
     "loguru>=0.7.2",
-
     # Agent Orchestration
     "langgraph>=0.2.50",
     "langgraph-checkpoint-postgres>=2.0",
-
     # Embeddings & Retrieval
     "sentence-transformers>=3.3.0",
     "voyageai>=0.3.0",
-
     # Web Search
     "tavily-python>=0.5.0",
-
     # LLM Security
     "llm-guard>=0.3.15",
-
     # Cloud & PDF
     "boto3>=1.35.0",
     "pypdf>=5.1.0",
-
     # Data Pipeline
     "pyyaml>=6.0",
     "faker>=33.0.0",
+    "deepagents>=0.7.41",
 ]
 
 [project.optional-dependencies]

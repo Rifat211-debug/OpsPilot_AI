@@ -224,3 +224,8 @@ __marimo__/
 
 
 .env
+rag.ipynb
+requirements.txt
+policy.txt
+
+data

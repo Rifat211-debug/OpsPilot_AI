@@ -30,7 +30,7 @@ def verify_password(plain_password: str, hashed_passowrd: str) -> bool:
 
 def create_access_token(username: str, delta: int | None = None, is_admin: bool = False) -> str:
     if delta is None:
-        exp = settings.JWT_EXPIRATION_MINUTES * 60
+        delta = settings.JWT_EXPIRATION_MINUTES * 60
         expire = datetime.datetime.now(datetime.UTC) + datetime.timedelta(seconds = delta)
     payload = {
         "sub": username,
@@ -50,17 +50,12 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
                 status_code = status.HTTP_401_UNAUTHORIZED,
                 detail = "Invalid authentication error!"
                 )
-            is_admin: bool = payload.get("is_admin", False)
-            return User(username = username, is_admin = is_admin)
+        is_admin: bool = payload.get("is_admin", False)
+        return User(username = username, is_admin = is_admin)
     except jwt.ExpiredSignatureError:
         raise HTTPException(
             status_code = status.HTTP_401_UNAUTHORIZED,
             detail = "Token has expired",
-        ) from None
-    except jwt.InvalidTokenError:
-        raise HTTPException(
-            status_code = status.HTTP_401_UNAUTHORIZED,
-            detail = "Token has expired"
         ) from None
     except jwt.InvalidTokenError:
         raise HTTPException(
